@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
         if (err) return next(err);
         console.log('todos:' + todos.length);
         res.json(todos);
-    });
+    }).sort({name:1});
 });
 
 /* POST /todos */
@@ -37,9 +37,9 @@ router.put('/:id', function (req, res, next) {
       });
 });
 
-/* DELETE /todos/:id */
-router.delete('/:id', function (req, res, next) {
-    Todo.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+/* DELETE /todos */
+router.delete('/', function (req, res, next) {
+    Todo.findByIdAndRemove(req.body.id, req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });
