@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+@import "reset";
+@import "common";
+
+/* color & background */
+$color1: #dc87d8;
+$color2: #ececec;
+
+.dialog {
+  padding: 8px 0;
+  background: $color1;
+  p {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+form {
+  margin: 8px;
+  input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-top: 8px;
+    background: $color2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  input[type=text] {
+    text-indent: 1em;
+  }
+  input[type=button] {
+    background: $color1;
+    color: white;
+  }
+}
+
+.list {
+  h1 {
+    line-height: 32px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+  }
+  ul {
+    padding: 8px 0;
+    li {
+      display: -webkit-box;
+      padding: 4px 8px;
+      line-height: 24px;
+      .name {
+        width: 40%;
+      }
+      .note {
+        width: 40%;
+        margin-left: 8px;
+        font-size: 12px;
+        color: #a9a9a9;
+      }
+      .action {
+        width: 20%;
+        .del {
+          padding: 4px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+          background: $color2;
+        }
+      }
+    }
+  }
+}
+
