@@ -46,7 +46,7 @@
                         $li.append(
                                 $('<div class="col name">').text(list[i].name),
                                 $('<div class="col note">').text(list[i].note),
-                                $('<div class="col action">').append(
+                                $('<div class="col action hidden">').append(
                                         $('<input type="button" class="del" value="delete">')
                                 )
                         ).attr('data-id', list[i]._id);
