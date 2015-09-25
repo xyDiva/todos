@@ -9,6 +9,15 @@ input {
   border: none;
   -webkit-appearance: none; }
 
+h1 {
+  font-size: 20px; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
 .hidden {
   display: none; }
 
@@ -22,56 +31,49 @@ input {
   max-width: 640px;
   margin: 0 auto; }
 
+header {
+  height: 40px;
+  line-height: 40px;
+  background: lightgreen; }
+  header h1 {
+    text-align: center; }
+
 /* color & background */
-.dialog {
-  padding: 8px 0;
-  background: #dc87d8; }
-  .dialog p {
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    line-height: 20px; }
+.main {
+  padding: 8px 16px; }
+  .main form {
+    margin-bottom: 16px; }
+    .main form input {
+      height: 40px;
+      border-radius: 4px; }
+    .main form .ipt-todo {
+      width: 77%;
+      background: #ececec;
+      text-indent: 1em; }
+    .main form .btn-add {
+      width: 20%;
+      background: lightgreen;
+      color: white; }
+  .main ul li {
+    padding: 0 8px;
+    line-height: 40px;
+    border-bottom: lightgray 1px solid; }
+    .main ul li .checkbox {
+      width: 18px;
+      height: 18px;
+      vertical-align: text-top;
+      margin-top: -2px;
+      border: lightgray 1px solid;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px; }
+      .main ul li .checkbox:checked {
+        background: lightgreen; }
+    .main ul li a {
+      color: #4c4c4c; }
 
-form {
-  margin: 8px; }
-  form input {
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-top: 8px;
-    background: #ececec;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px; }
-  form input[type=text] {
-    text-indent: 1em; }
-  form input[type=button] {
-    background: #dc87d8;
-    color: white; }
-
-.list h1 {
-  line-height: 32px;
-  font-size: 16px;
+.ipt-search {
+  width: 100%;
+  height: 36px;
   text-align: center;
-  font-weight: bold; }
-.list ul {
-  padding: 8px 0; }
-  .list ul li {
-    display: -webkit-box;
-    padding: 4px 8px;
-    line-height: 24px; }
-    .list ul li .name {
-      width: 40%; }
-    .list ul li .note {
-      width: 40%;
-      margin-left: 8px;
-      font-size: 12px;
-      color: #a9a9a9; }
-    .list ul li .action {
-      width: 20%; }
-      .list ul li .action .del {
-        padding: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        background: #ececec; }
+  border-bottom: lightgreen 1px dashed; }

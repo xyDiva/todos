@@ -1,184 +1,110 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
-    <title>GO</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/main.css"/>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/main.css'/>
 </head>
 <body>
-<div class="container">
-    <div class="dialog">
-        <p>为了yangyang的骚蓝bugatti！</p>
+<header>
+    <h1><%= title %></h1>
+</header>
 
-        <div class="hidden">
-            <p>yangyang 加油!</p>
+<div class="main" ng-view></div>
 
-            <p>早日找到满意的工作!</p>
+<!-- Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
 
-            <p>古耐!</p>
-
-            <p>hello yangyang! 火腿肠炒饭好吃吗?</p>
-        </div>
-    </div>
+<!-- Template -->
+<script type="text/ng-template" id="/todos.html">
+    <!--<input class="ipt-search" type="text" ng-model="search.name" placeholder="search...">-->
     <form>
-        <input type="text" id="name" name="name" placeholder="name..."/>
-        <input type="text" id="note" name="note" placeholder="note..."/>
-        <input type="button" id="addBtn" value="add"/>
+        <input class="ipt-todo" type="text" ng-model="todo.name" placeholder="添加一个任务..."/>
+        <input class="btn-add" type="button" value="添加" ng-click="add(todo)"/>
     </form>
-    <div class="list" id="list">
-        <h1>note list</h1>
-        <ul></ul>
-    </div>
-</div>
+    <ul>
+        <li ng-repeat="todo in todos | filter: search">
+            <span ng-show="todo.completed" style="float: right;">我还没写好...</span>
+            <input class="checkbox" type="checkbox" ng-model="todo.completed">
+            <a href="#/{{$index}}">{{todo.name}}</a>
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="/todoDetails.html">
+    <h1>{{todo.name}}</h1>
+    completed: <input type="checkbox" ng-model="todo.completed">
+    note: <textarea>{{todo.note}}</textarea>
+</script>
+
 <script>
-    $(function () {
-        // list
-        var $list = $('#list');
-        $.ajax({
-            url: '/todos',
-            method: 'get',
-            success: function (list) {
-                if (list.length) {
-                    for (var i in list) {
-                        var $li = $('<li>');
-                        $li.append(
-                                $('<div class="col name">').text(list[i].name),
-                                $('<div class="col note">').text(list[i].note),
-                                $('<div class="col action hidden">').append(
-                                        $('<input type="button" class="del" value="delete">')
-                                )
-                        ).attr('data-id', list[i]._id);
-                        $list.find('ul').append($li);
+    angular.module('app', ['ngRoute'])
+
+        //---------------
+        // Services
+        //---------------
+
+            .factory('todos', ['$http', function ($http) {
+                var todos = {};
+                todos.getTodos = function () {
+                    return $http.get('/todos');
+                }
+                todos.addTodo = function (params) {
+                    return $http.post('/todos', params);
+                }
+                return todos;
+            }])
+
+        //---------------
+        // Controllers
+        //---------------
+
+            .controller('TodoController', ['$scope', 'todos', function ($scope, todos) {
+                $scope.add = function (todo) {
+                    if (todo && todo.name) {
+                        todo.completed = false;
+                        if (!todo.note) {
+                            todo.note = 'add note...';
+                        }
                     }
-                }
-                else {
-                    var $p = $('<p class="no-data">add one first...</p>');
-                    $list.append($p);
-                }
-            }
-        });
+                    else {
+                        alert('name required...');
+                        return false;
+                    }
+                    todos.addTodo(todo).success(function (r) {
+                        alert('added successfully');
+                        location.reload();
 
-        $list.on('click', '.del', function () {
-            var id = $(this).parents('li').data('id');
-            var params = {
-                id: id
-            };
-            $.ajax({
-                url: '/todos',
-                method: 'delete',
-                data: params,
-                success: function (r) {
-                    alert('deleted successfully');
-                    location.reload();
-                }
-            });
-        });
+                    })
+                };
 
-        //form
-        var $name = $('#name'),
-                $note = $('#note'),
-                $addBtn = $('#addBtn');
-        $addBtn.click(function () {
-            var params = {
-                name: $name.val(),
-                note: $note.val() || 'add note...',
-                completed: false
-            };
-            if (!params.name) {
-                alert('name required');
-                return false;
-            }
-            $.ajax({
-                url: '/todos',
-                method: 'post',
-                data: params,
-                success: function (r) {
-                    alert('added successfully');
-                    location.reload();
-                }
-            });
-        })
-    });
+                todos.getTodos().success(function (arr) {
+                    $scope.todos = arr;
+                });
+            }])
+
+            .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', function ($scope, $routeParams, todos) {
+                $scope.todo = todos[$routeParams.id];
+            }])
+
+        //---------------
+        // Routes
+        //---------------
+
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider
+                        .when('/', {
+                            templateUrl: '/todos.html',
+                            controller: 'TodoController'
+                        })
+
+                        .when('/:id', {
+                            templateUrl: '/todoDetails.html',
+                            controller: 'TodoDetailCtrl'
+                        });
+            }]);
 </script>
 </body>
 </html>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html ng-app="app">-->
-<!--<head>-->
-<!--<title><%= title %></title>-->
-<!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1><%= title %></h1>-->
-
-<!--<ng-view></ng-view>-->
-
-<!--&lt;!&ndash; Libraries &ndash;&gt;-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>-->
-
-<!--&lt;!&ndash; Template &ndash;&gt;-->
-<!--<script type="text/ng-template" id="/todos.html">-->
-<!--Search: <input type="text" ng-model="search.name">-->
-<!--<ul>-->
-<!--<li ng-repeat="todo in todos | filter: search">-->
-<!--<input type="checkbox" ng-model="todo.completed">-->
-<!--<a href="#/{{$index}}">{{todo.name}}</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</script>-->
-
-<!--<script type="text/ng-template" id="/todoDetails.html">-->
-<!--<h1>{{ todo.name }}</h1>-->
-<!--completed: <input type="checkbox" ng-model="todo.completed">-->
-<!--note: <textarea>{{ todo.note }}</textarea>-->
-<!--</script>-->
-
-<!--<script>-->
-<!--angular.module('app', ['ngRoute'])-->
-
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--// Services-->
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-
-<!--.factory('Todos', ['$http', function ($http) {-->
-<!--return $http.get('/todos');-->
-<!--}])-->
-
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--// Controllers-->
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-
-<!--.controller('TodoController', ['$scope', 'Todos', function ($scope, Todos) {-->
-<!--Todos.success(function (arr) {-->
-<!--$scope.todos = arr;-->
-<!--});-->
-<!--}])-->
-
-<!--.controller('TodoDetailCtrl', ['$scope', '$routeParams', 'Todos', function ($scope, $routeParams, Todos) {-->
-<!--$scope.todo = Todos[$routeParams.id];-->
-<!--}])-->
-
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--// Routes-->
-<!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-
-<!--.config(['$routeProvider', function ($routeProvider) {-->
-<!--$routeProvider-->
-<!--.when('/', {-->
-<!--templateUrl: '/todos.html',-->
-<!--controller: 'TodoController'-->
-<!--})-->
-
-<!--.when('/:id', {-->
-<!--templateUrl: '/todoDetails.html',-->
-<!--controller: 'TodoDetailCtrl'-->
-<!--});-->
-<!--}]);-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->

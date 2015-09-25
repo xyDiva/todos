@@ -8,9 +8,8 @@ var Todo = require('../models/Todo.js');
 router.get('/', function (req, res, next) {
     Todo.find(function (err, todos) {
         if (err) return next(err);
-        console.log('todos:' + todos.length);
         res.json(todos);
-    }).sort({name:1});
+    }).sort({updated_at: -1});
 });
 
 /* POST /todos */
@@ -34,7 +33,7 @@ router.put('/:id', function (req, res, next) {
     Todo.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
-      });
+    });
 });
 
 /* DELETE /todos */
