@@ -27,17 +27,21 @@
     </form>
     <ul>
         <li ng-repeat="todo in todos | filter: search">
-            <span ng-show="todo.completed" style="float: right;">我还没写好...</span>
+            <span class="fr" ng-show="todo.completed">我还没写好...</span>
             <input class="checkbox" type="checkbox" ng-model="todo.completed" ng-click="update(todo)">
-            <a href="#/{{$index}}">{{todo.name}}</a>
+            <a href="#/{{todo._id}}">{{todo.name}}</a>
         </li>
     </ul>
 </script>
 
 <script type="text/ng-template" id="/todoDetails.html">
-    <h1>{{todo.name}}</h1>
-    completed: <input type="checkbox" ng-model="todo.completed">
-    note: <textarea>{{todo.note}}</textarea>
+    <div class="item">
+        <span class="fr">创建于{{todo.updated_at}}</span>
+        <input class="checkbox" type="checkbox" ng-model="todo.completed">{{todo.name}}
+    </div>
+    <div class="item">
+        <textarea placeholder="添加备注...">{{todo.note}}</textarea>
+    </div>
 </script>
 
 <script>
@@ -49,11 +53,15 @@
 
             .factory('todos', ['$http', function ($http) {
                 var todos = {};
+
                 todos.getTodos = function () {
                     return $http.get('/todos');
                 };
                 todos.addTodo = function (params) {
                     return $http.post('/todos', params);
+                };
+                todos.getTodo = function (id) {
+                    return $http.get('/todos/' + id);
                 };
                 todos.updateTodo = function (params) {
                     return $http.put('/todos/' + params._id, params);
@@ -98,7 +106,10 @@
             }])
 
             .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', function ($scope, $routeParams, todos) {
-                $scope.todo = todos[$routeParams.id];
+
+                todos.getTodo($routeParams.id).success(function (todo) {
+                    $scope.todo = todo;
+                })
             }])
 
         //---------------
