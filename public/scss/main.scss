@@ -29,9 +29,15 @@ $lightgreen:lightgreen;
   }
   ul {
     li {
+      margin-bottom: 8px;
       padding: 0 8px;
       line-height: 40px;
-      border-bottom: lightgray 1px solid;
+      -webkit-box-shadow: 0 1px 1px lightgray;
+      -moz-box-shadow: 0 1px 1px lightgray;
+      box-shadow: 0 1px 1px lightgray;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
       .checkbox {
         width: 18px;
         height: 18px;

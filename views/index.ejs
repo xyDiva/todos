@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/css/main.css'/>
+    <link rel='stylesheet' href='css/main.css'/>
+    <link href="favicon.ico" rel="Shortcut Icon" type="image/x-icon">
 </head>
 <body>
 <header>
     <h1><%= title %></h1>
 </header>
 
-<div class="main" ng-view></div>
+<div class="main header-filler" ng-view></div>
 
 <!-- Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
@@ -27,7 +28,7 @@
     <ul>
         <li ng-repeat="todo in todos | filter: search">
             <span ng-show="todo.completed" style="float: right;">我还没写好...</span>
-            <input class="checkbox" type="checkbox" ng-model="todo.completed">
+            <input class="checkbox" type="checkbox" ng-model="todo.completed" ng-click="update(todo)">
             <a href="#/{{$index}}">{{todo.name}}</a>
         </li>
     </ul>
@@ -50,9 +51,15 @@
                 var todos = {};
                 todos.getTodos = function () {
                     return $http.get('/todos');
-                }
+                };
                 todos.addTodo = function (params) {
                     return $http.post('/todos', params);
+                };
+                todos.updateTodo = function (params) {
+                    return $http.put('/todos/' + params._id, params);
+                }
+                todos.deleteTodo = function (params) {
+                    return $http.delete('/todos/' + params._id);
                 }
                 return todos;
             }])
@@ -62,6 +69,11 @@
         //---------------
 
             .controller('TodoController', ['$scope', 'todos', function ($scope, todos) {
+
+                todos.getTodos().success(function (arr) {
+                    $scope.todos = arr;
+                });
+
                 $scope.add = function (todo) {
                     if (todo && todo.name) {
                         todo.completed = false;
@@ -80,9 +92,9 @@
                     })
                 };
 
-                todos.getTodos().success(function (arr) {
-                    $scope.todos = arr;
-                });
+                $scope.update = function (todo) {
+                    console.log(todo);
+                };
             }])
 
             .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', function ($scope, $routeParams, todos) {
