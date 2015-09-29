@@ -39,9 +39,9 @@
         <span class="fr">创建于{{todo.updated_at}}</span>
         <input class="checkbox" type="checkbox" ng-model="todo.completed">{{todo.name}}
     </div>
-    <div class="item">
-        <textarea placeholder="添加备注...">{{todo.note}}</textarea>
-    </div>
+    <!--<div class="item"><input type="date" placeholder="到期日"/></div>-->
+    <!--<div class="item"><input type="datetime" placeholder="提醒"/></div>-->
+    <div class="item"><textarea placeholder="添加备注...">{{todo.note}}</textarea></div>
 </script>
 
 <script>
@@ -85,9 +85,6 @@
                 $scope.add = function (todo) {
                     if (todo && todo.name) {
                         todo.completed = false;
-                        if (!todo.note) {
-                            todo.note = 'add note...';
-                        }
                     }
                     else {
                         alert('name required...');
@@ -95,8 +92,6 @@
                     }
                     todos.addTodo(todo).success(function (r) {
                         alert('added successfully');
-                        location.reload();
-
                     })
                 };
 
@@ -126,6 +121,9 @@
                         .when('/:id', {
                             templateUrl: '/todoDetails.html',
                             controller: 'TodoDetailCtrl'
+                        })
+                        .otherwise({
+                            templateUrl: 'error.ejs'
                         });
             }]);
 </script>
