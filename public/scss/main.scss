@@ -8,6 +8,21 @@
 $lightgreen:lightgreen;
 
 
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  vertical-align: text-top;
+  margin-top: -2px;
+  border: lightgray 1px solid;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  &:checked {
+    background: $lightgreen;
+  }
+}
+
 .main {
   padding: 8px 16px;
   form {
@@ -15,6 +30,13 @@ $lightgreen:lightgreen;
     input {
       height: 40px;
       border-radius: 4px;
+    }
+    .ipt-search {
+      width: 100%;
+      height: 36px;
+      margin-bottom: 8px;
+      text-align: center;
+      border-bottom: $lightgreen 1px dashed;
     }
     .ipt-todo {
       width: 77%;
@@ -29,32 +51,18 @@ $lightgreen:lightgreen;
   }
   ul {
     li {
+      margin-bottom: 8px;
       padding: 0 8px;
       line-height: 40px;
-      border-bottom: lightgray 1px solid;
-      .checkbox {
-        width: 18px;
-        height: 18px;
-        vertical-align: text-top;
-        margin-top: -2px;
-        border: lightgray 1px solid;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        &:checked {
-          background: $lightgreen;
-        }
-      }
+      -webkit-box-shadow: 0 1px 1px lightgray;
+      -moz-box-shadow: 0 1px 1px lightgray;
+      box-shadow: 0 1px 1px lightgray;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
       a {
         color: #4c4c4c;
       }
     }
   }
-}
-
-.ipt-search {
-  width: 100%;
-  height: 36px;
-  text-align: center;
-  border-bottom: $lightgreen 1px dashed;
 }
