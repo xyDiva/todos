@@ -21,27 +21,50 @@
 <!-- Template -->
 <script type="text/ng-template" id="/todos.html">
     <!--<input class="ipt-search" type="text" ng-model="search.name" placeholder="search...">-->
-    <form>
-        <input class="ipt-todo" type="text" ng-model="todo.name" placeholder="添加一个任务..."/>
-        <input class="btn-add" type="button" value="添加" ng-click="add(todo)"/>
-    </form>
+    <!--<form>-->
+    <!--<input class="ipt-todo" type="text" ng-model="todo.name" placeholder="添加一个任务..."/>-->
+    <!--<input class="btn-add" type="button" value="添加" ng-click="add(todo)"/>-->
+    <!--</form>-->
+    <!--<ul>-->
+    <!--<li ng-repeat="todo in todos | filter: search">-->
+    <!--<span class="fr" ng-show="todo.completed">我还没写好...</span>-->
+    <!--<input class="checkbox" type="checkbox" ng-model="todo.completed" ng-click="update(todo)">-->
+    <!--<a href="#/{{todo._id}}">{{todo.name}}</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    Search: <input type="text" ng-model="search.name">
     <ul>
         <li ng-repeat="todo in todos | filter: search">
-            <span class="fr" ng-show="todo.completed">我还没写好...</span>
-            <input class="checkbox" type="checkbox" ng-model="todo.completed" ng-click="update(todo)">
-            <a href="#/{{todo._id}}">{{todo.name}}</a>
+            <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
+            <a ng-show="!editing[$index]" href="#/">{{todo.name}}</a>
+            <button ng-show="!editing[$index]" ng-click="edit($index)">edit</button>
+            <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
+
+            <input ng-show="editing[$index]" type="text" ng-model="todo.name">
+            <button ng-show="editing[$index]" ng-click="update($index)">Update</button>
+            <button ng-show="editing[$index]" ng-click="cancel($index)">Cancel</button>
         </li>
     </ul>
+    New task <input type="text" ng-model="newTodo">
+    <button ng-click="add()">Create</button>
 </script>
 
 <script type="text/ng-template" id="/todoDetails.html">
-    <div class="item">
-        <span class="fr">创建于{{todo.updated_at}}</span>
-        <input class="checkbox" type="checkbox" ng-model="todo.completed">{{todo.name}}
-    </div>
+    <!--<div class="item">-->
+    <!--<span class="fr">创建于{{todo.updated_at}}</span>-->
+    <!--<input class="checkbox" type="checkbox" ng-model="todo.completed">{{todo.name}}-->
+    <!--</div>-->
     <!--<div class="item"><input type="date" placeholder="到期日"/></div>-->
     <!--<div class="item"><input type="datetime" placeholder="提醒"/></div>-->
-    <div class="item"><textarea placeholder="添加备注...">{{todo.note}}</textarea></div>
+    <!--<div class="item"><textarea placeholder="添加备注...">{{todo.note}}</textarea></div>-->
+
+    <h1></h1>
+    completed: <input type="checkbox" ng-model="todo.completed"><br>
+    note: <textarea ng-model="todo.note"></textarea><br><br>
+
+    <button ng-click="update()">Update</button>
+    <button ng-click="remove()">remove</button>
+    <a href="/">Cancel</a>
 </script>
 
 <script>
@@ -77,13 +100,15 @@
         //---------------
 
             .controller('TodoController', ['$scope', 'todos', function ($scope, todos) {
-
+                $scope.editing = [];
                 todos.getTodos().success(function (arr) {
                     $scope.todos = arr;
                 });
 
-                $scope.add = function (todo) {
-                    if (todo && todo.name) {
+                $scope.add = function () {
+                    var todo = {};
+                    if ($scope.newTodo) {
+                        todo.name = $scope.newTodo;
                         todo.completed = false;
                     }
                     else {
@@ -92,19 +117,54 @@
                     }
                     todos.addTodo(todo).success(function (r) {
                         alert('added successfully');
+                        $scope.todos.unshift(todo);
+                        $scope.newTodo = ''; // clear textbox
                     })
                 };
 
-                $scope.update = function (todo) {
-                    console.log(todo);
-                };
+                $scope.update = function (index) {
+                    var todo = $scope.todos[index];
+                    todos.updateTodo(todo);
+                    $scope.editing[index] = false;
+                }
+
+                $scope.edit = function (index) {
+                    $scope.editing[index] = angular.copy($scope.todos[index]);
+                }
+
+                $scope.cancel = function (index) {
+                    $scope.todos[index] = angular.copy($scope.editing[index]);
+                    $scope.editing[index] = false;
+                }
+
+                $scope.remove = function (index) {
+                    var todo = $scope.todos[index];
+                    todos.deleteTodo(todo).success(function (r) {
+                        alert('delete successfully');
+                        $scope.todos.splice(index, 1);
+                    })
+                }
             }])
 
-            .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', function ($scope, $routeParams, todos) {
+            .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', '$location', function ($scope, $routeParams, todos, $location) {
 
-                todos.getTodo($routeParams.id).success(function (todo) {
-                    $scope.todo = todo;
-                })
+//                todos.getTodo($routeParams.id).success(function (todo) {
+//                    $scope.todo = todo;
+//                })
+
+                $scope.todo = todos.get({id: $routeParams.id});
+
+                $scope.update = function () {
+                    todos.update({id: $scope.todo._id}, $scope.todo, function () {
+                        $location.url('/');
+                    });
+                }
+
+                $scope.remove = function () {
+                    todos.remove({id: $scope.todo._id}, function () {
+                        $location.url('/');
+                    });
+                }
             }])
 
         //---------------
@@ -117,13 +177,9 @@
                             templateUrl: '/todos.html',
                             controller: 'TodoController'
                         })
-
                         .when('/:id', {
                             templateUrl: '/todoDetails.html',
                             controller: 'TodoDetailCtrl'
-                        })
-                        .otherwise({
-                            templateUrl: 'error.ejs'
                         });
             }]);
 </script>
