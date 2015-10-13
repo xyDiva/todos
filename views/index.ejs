@@ -32,7 +32,12 @@
     <!--<a href="#/{{todo._id}}">{{todo.name}}</a>-->
     <!--</li>-->
     <!--</ul>-->
-    Search: <input type="text" ng-model="search.name">
+    <form>
+        <input type="text" class="ipt-search" placeholder="search..." ng-model="search.name">
+        <input type="text" class="ipt-todo" placeholder="add todo..." ng-model="newTodo">
+        <input type="button" class="btn-add" value="ADD" ng-click="add()"/>
+    </form>
+
     <ul>
         <li ng-repeat="todo in todos | filter: search">
             <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
@@ -45,8 +50,6 @@
             <button ng-show="editing[$index]" ng-click="cancel($index)">Cancel</button>
         </li>
     </ul>
-    New task <input type="text" ng-model="newTodo">
-    <button ng-click="add()">Create</button>
 </script>
 
 <script type="text/ng-template" id="/todoDetails.html">

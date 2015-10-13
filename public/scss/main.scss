@@ -31,6 +31,13 @@ $lightgreen:lightgreen;
       height: 40px;
       border-radius: 4px;
     }
+    .ipt-search {
+      width: 100%;
+      height: 36px;
+      margin-bottom: 8px;
+      text-align: center;
+      border-bottom: $lightgreen 1px dashed;
+    }
     .ipt-todo {
       width: 77%;
       background: #ececec;
@@ -58,11 +65,4 @@ $lightgreen:lightgreen;
       }
     }
   }
-}
-
-.ipt-search {
-  width: 100%;
-  height: 36px;
-  text-align: center;
-  border-bottom: $lightgreen 1px dashed;
 }
