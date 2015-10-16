@@ -24,7 +24,7 @@ $lightgreen:lightgreen;
 }
 
 .main {
-  padding: 8px 16px;
+  padding: 50px 10% 40px;
   form {
     margin-bottom: 16px;
     input {
@@ -44,6 +44,7 @@ $lightgreen:lightgreen;
       text-indent: 1em;
     }
     .btn-add {
+      float: right;
       width: 20%;
       background: $lightgreen;
       color: white;

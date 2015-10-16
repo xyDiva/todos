@@ -3,7 +3,8 @@
   padding: 0; }
 
 body {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: "microsoft yahei", Arial; }
 
 input {
   border: none;
@@ -41,12 +42,22 @@ header {
   line-height: 40px;
   top: 0;
   left: 0;
-  background: lightgreen; }
-  header h1 {
+  background: grey; }
+  header nav {
     text-align: center; }
+    header nav a {
+      padding: 0 16px;
+      color: white; }
 
-.header-filler {
-  margin-top: 40px; }
+footer {
+  position: fixed;
+  width: 100%;
+  line-height: 30px;
+  left: 0;
+  bottom: 0;
+  font-size: 14px;
+  text-align: center;
+  background: grey; }
 
 /* color & background */
 .checkbox {
@@ -62,7 +73,7 @@ header {
     background: lightgreen; }
 
 .main {
-  padding: 8px 16px; }
+  padding: 50px 10% 40px; }
   .main form {
     margin-bottom: 16px; }
     .main form input {
@@ -79,6 +90,7 @@ header {
       background: #ececec;
       text-indent: 1em; }
     .main form .btn-add {
+      float: right;
       width: 20%;
       background: lightgreen;
       color: white; }
