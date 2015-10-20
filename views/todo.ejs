@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
     <title>HI,DIVA!</title>
-    <link rel='stylesheet' href='css/main.css'/>
+    <link rel='stylesheet' href='css/todo.css'/>
     <link href="favicon.ico" rel="Shortcut Icon" type="image/x-icon">
 </head>
 <body>
@@ -25,13 +25,13 @@
 
 <!-- Template -->
 <script type="text/ng-template" id="todos.html">
-    <form>
+    <form class="form-action">
         <input type="text" class="ipt-search" placeholder="search..." ng-model="search.name">
         <input type="text" class="ipt-todo" placeholder="add todo..." ng-model="newTodo">
         <input type="button" class="btn-add" value="ADD" ng-click="add()"/>
     </form>
 
-    <ul>
+    <ul class="list-todo">
         <li ng-repeat="todo in todos | filter: search">
             <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
             <a ng-show="!editing[$index]" href="#/{{todo._id}}">{{todo.name}}</a>
@@ -46,12 +46,14 @@
 </script>
 
 <script type="text/ng-template" id="todoDetails.html">
-    completed: <input type="checkbox" ng-model="todo.completed"><br>
-    note: <textarea ng-model="todo.note"></textarea><br><br>
+    <section class="detail-todo">
+        <p>{{todo.name}}<input type="checkbox" class="checkbox" ng-model="todo.completed"></p>
+        note: <textarea ng-model="todo.note"></textarea><br><br>
 
-    <button ng-click="update()">Update</button>
-    <button ng-click="remove()">remove</button>
-    <a href="/">Cancel</a>
+        <button ng-click="update()">Update</button>
+        <button ng-click="remove()">remove</button>
+        <a href="/todo">Cancel</a>
+    </section>
 </script>
 
 <script>
@@ -86,7 +88,7 @@
         // Controllers
         //---------------
 
-            .controller('TodoController', ['$scope', 'todos', function ($scope, todos) {
+            .controller('TodoCtrl', ['$scope', 'todos', function ($scope, todos) {
                 $scope.editing = [];
                 todos.getTodos().success(function (arr) {
                     $scope.todos = arr;
@@ -134,11 +136,12 @@
             }])
 
             .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'todos', '$location', function ($scope, $routeParams, todos, $location) {
-//                todos.getTodo($routeParams.id).success(function (todo) {
-//                    $scope.todo = todo;
-//                })
+                todos.getTodo($routeParams.id).success(function (todo) {
+                    console.log(todo)
+                    $scope.todo = todo;
+                });
 
-                $scope.todo = todos.get({id: $routeParams.id});
+//                $scope.todo = todos.get({id: $routeParams.id});
 
                 $scope.update = function () {
                     todos.update({id: $scope.todo._id}, $scope.todo, function () {
@@ -158,10 +161,11 @@
         //---------------
 
             .config(['$routeProvider', function ($routeProvider) {
+
                 $routeProvider
                         .when('/', {
                             templateUrl: 'todos.html',
-                            controller: 'TodoController'
+                            controller: 'TodoCtrl'
                         })
                         .when('/:id', {
                             templateUrl: 'todoDetails.html',
