@@ -30,7 +30,7 @@ nodemon 启动程序
 
 ##开发中遇到的问题集合:
 
-- 
+- 渲染todo列表的时候，URL上自动附加'#'
 
 
 ## Documentation
