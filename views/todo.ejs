@@ -64,22 +64,23 @@
         //---------------
 
             .factory('todos', ['$http', function ($http) {
+                var path = '/api/todo';
                 var todos = {};
 
                 todos.getTodos = function () {
-                    return $http.get('/todos');
+                    return $http.get(path);
                 };
                 todos.addTodo = function (params) {
-                    return $http.post('/todos', params);
+                    return $http.post(path, params);
                 };
                 todos.getTodo = function (id) {
-                    return $http.get('/todos/' + id);
+                    return $http.get(path + '/' + id);
                 };
                 todos.updateTodo = function (params) {
-                    return $http.put('/todos/' + params._id, params);
+                    return $http.put(path + '/' + params._id, params);
                 }
                 todos.deleteTodo = function (params) {
-                    return $http.delete('/todos/' + params._id);
+                    return $http.delete(path + '/' + params._id);
                 }
                 return todos;
             }])

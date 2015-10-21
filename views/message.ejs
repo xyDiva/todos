@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
@@ -13,13 +13,83 @@
     <% include header.ejs %>
 </header>
 
-<div class="main">
-    message
-</div>
+<div class="main" ng-view></div>
 
 <footer>
     <% include footer.ejs %>
 </footer>
+
+<!-- Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+
+<!-- Template -->
+<script type="text/ng-template" id="messages.html">
+    <ul class="list-message" ng-show="messages.length">
+        <li ng-repeat="msg in messages">
+            <div class="name">{{msg.name}}</div>
+            <div class="content">{{msg.content}}</div>
+            <div class="action">{{msg.time}}</div>
+        </li>
+    </ul>
+
+    <div class="no-data" ng-hide="messages.length">no data</div>
+
+    <form class="form-message">
+        <div class="item">name:<input type="text" ng-model="message.name"/></div>
+        <div class="item">email:<input type="text" ng-model="message.email"/></div>
+        <div class="item">content:<input type="text" ng-model="message.content"/></div>
+        <input type="button" ng-click="add()" value="comment"/>
+    </form>
+</script>
+
+<script>
+    angular.module('app', ['ngRoute'])
+            .factory('messages', ['$http', function ($http) {
+                var path = '/api/message';
+                var messages = {};
+
+                messages.getMessages = function () {
+                    return $http.get(path);
+                }
+
+                messages.add = function () {
+                    return $http.post();
+                }
+
+                return messages;
+            }])
+            .controller('MessageCtrl', ['$scope', 'messages', function ($scope, messages) {
+                messages.getMessages().success(function (arr) {
+                    $scope.messages = arr;
+                });
+                $scope.add = function () {
+                    var message = $scope.message;
+                    if(!message.name) {
+                        alert('name required');
+                    }
+                    else if(!message.email) {
+                        alert('email required');
+                    }
+                    else if (!message.content) {
+                        alert('content required');
+                    }
+
+                    todos.addTodo(todo).success(function (r) {
+                        alert('added successfully');
+                        $scope.todos.unshift(todo);
+                        $scope.newTodo = ''; // clear textbox
+                    })
+                };
+            }])
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.
+                        when('/', {
+                            templateUrl: 'messages.html',
+                            controller: 'MessageCtrl'
+                        });
+            }]);
+</script>
 
 </body>
 </html>

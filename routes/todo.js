@@ -4,7 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Todo = require('../models/Todo.js');
 
-/* GET /todos listing. */
+/* GET /api/todo listing. */
 router.get('/', function (req, res, next) {
     Todo.find(function (err, todos) {
         if (err) return next(err);
@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     }).sort({updated_at: -1});
 });
 
-/* POST /todos */
+/* POST /api/todo */
 router.post('/', function (req, res, next) {
     Todo.create(req.body, function (err, post) {
         if (err) return next(err);
@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
     });
 });
 
-/* GET /todos/:id */
+/* GET /api/todo/:id */
 router.get('/:id', function (req, res, next) {
     Todo.findById(req.params.id, function (err, post) {
         if (err) return next(err);
@@ -28,7 +28,7 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-/* PUT /todos/:id */
+/* PUT /api/todo/:id */
 router.put('/:id', function (req, res, next) {
     Todo.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
@@ -36,7 +36,7 @@ router.put('/:id', function (req, res, next) {
     });
 });
 
-/* DELETE /todos */
+/* DELETE /api/todo */
 router.delete('/:id', function (req, res, next) {
     Todo.findByIdAndRemove(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
