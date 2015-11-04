@@ -1,18 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-// index
-router.get('/', function (req, res) {
-    res.render('index', {
-        title: 'I am index'
-    });
-});
-
 // home
-router.get('/home', function (req, res) {
-    res.render('index', {
-        title: 'I am home'
-    });
+router.get('/', function (req, res) {
+    res.render('index');
 });
 
 // todo_
@@ -22,9 +13,7 @@ router.get('/todo', function (req, res) {
 
 // cv
 router.get('/cv', function (req, res) {
-    res.render('cv',{
-        title:'I am cv'
-    });
+    res.render('cv');
 });
 
 // message
