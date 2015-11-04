@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
@@ -24,11 +24,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
 
 <script>
-    angular.module('app')
-            .config(['$routeProvider', function ($routeProvider) {
+    angular.module('app', ['ngRoute'])
+            .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+                $locationProvider.html5Mode(true); // 移除url中的管理路径#
                 $routeProvider
                         .when('/', {
-                            templateUrl: 'home.ejs'
+                            templateUrl: 'views/home'
+                        })
+                        .when('/home', {
+                            templateUrl: 'views/home'
+                        })
+                        .when('/todo', {
+                            templateUrl: 'views/todo'
+                        })
+                        .when('/cv', {
+                            templateUrl: 'views/cv'
+                        })
+                        .otherwise({
+                            redirectTo: '/' // it will be redirected to index when user visits undefined url address.
                         });
             }]);
 </script>
