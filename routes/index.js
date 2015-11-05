@@ -3,22 +3,31 @@ var router = express.Router();
 
 // home
 router.get('/', function (req, res) {
-    res.render('index');
+    res.render('index', {
+        title: 'D-HOME'
+    });
 });
 
 // todo_
 router.get('/todo', function (req, res) {
-    res.render('todo');
+    res.render('todo', {
+        title: 'D-TODO'
+    });
 });
 
 // cv
 router.get('/cv', function (req, res) {
-    res.render('cv');
+    res.render('cv', {
+        title: 'D-CV'
+    });
 });
 
 // message
 router.get('/message', function (req, res) {
-    res.render('message');
+    res.render('message', {
+        title: 'D-MESSAGE'
+    });
 });
 
 module.exports = router;
+

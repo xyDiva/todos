@@ -20,9 +20,21 @@ mongoose.connect('mongodb://localhost/todoApp', function (err) {
 
 var app = express();
 
+// Register ejs as .html. If we did
+// not call this, we would need to
+// name our views foo.ejs instead
+// of foo.html. The __express method
+// is simply a function that engines
+// use to hook into the Express view
+// system by default, so if we want
+// to change "foo.ejs" to "foo.html"
+// we simply pass _any_ function, in this
+// case `ejs.__express`.
+app.engine('.html', require('ejs').__express);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs'); // todo: ejs --> html?
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 app.use(logger('dev'));
@@ -59,13 +71,14 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
+if (app.get('env') === 'production') { // todo ask:how to set up env as production?
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
     });
-});
-
+}
 
 module.exports = app;

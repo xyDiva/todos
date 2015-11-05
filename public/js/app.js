@@ -1,7 +1,8 @@
 angular.module('app', ['ngRoute'])
-    .controller('homeCtrl', function ($scope) {
+    .controller('homeCtrl', ['$scope', '$templateCache', function ($scope, $templateCache) {
         $scope.title = 'I am home';
-    })
+        $templateCache.put('views/home.html', '<b>Second</b> template');
+    }])
     .controller('todoCtrl', function ($scope) {
         $scope.title = 'I am todo';
     })
