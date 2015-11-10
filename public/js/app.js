@@ -1,13 +1,15 @@
 angular.module('app', ['ngRoute'])
-    .controller('homeCtrl', ['$scope', '$templateCache', function ($scope, $templateCache) {
+    .controller('homeCtrl', ['$scope', function ($scope) {
         $scope.title = 'I am home';
-        $templateCache.put('views/home.html', '<b>Second</b> template');
     }])
     .controller('todoCtrl', function ($scope) {
         $scope.title = 'I am todo';
     })
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-        $locationProvider.html5Mode(true); // 移除url中的管理路径#
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        }); // 移除url中的管理路径#
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
