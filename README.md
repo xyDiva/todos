@@ -28,9 +28,19 @@ nodemon 启动程序
 
 - [Mongoose学习参考文档](https://cnodejs.org/topic/504b4924e2b84515770103dd)
 
+- [markdown语法](http://wowubuntu.com/markdown/)
+
 ##开发中遇到的问题集合:
 
-- 渲染todo列表的时候，URL上自动附加'#'
+- angular的URL中自动附加'#'的问题  
+reference:  
+1.[HTML5Mode](https://gist.github.com/jrmoran/4277025)  
+2.[AngularJS去掉的URL里的#号](http://blog.fens.me/angularjs-url/)
+
+- angular模板404  
+angular的路由是建立在express路由基础之上,前端访问的所有静态资源需要在后端进行配置，例如：  
+`app.use(express.static(path.join(__dirname, 'views')));`  
+可以访问[localhost:3000/index.html](localhost:3000/index.html)判定路径是否设置成功.
 
 
 ## Documentation

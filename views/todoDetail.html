@@ -1,0 +1,8 @@
+<section class="detail-todo">
+    <p>{{todo.name}}<input type="checkbox" class="checkbox" ng-model="todo.completed"></p>
+    note: <textarea ng-model="todo.note"></textarea><br><br>
+
+    <button ng-click="update()">Update</button>
+    <button ng-click="remove()">remove</button>
+    <a href="/todo">Cancel</a>
+</section>

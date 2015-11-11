@@ -12,19 +12,19 @@ angular.module('app', ['ngRoute'])
         }); // 移除url中的管理路径#
         $routeProvider
             .when('/', {
-                templateUrl: 'views/home.html',
+                templateUrl: 'home.html',
                 controller: 'homeCtrl'
             })
             .when('/todo', {
-                templateUrl: 'views/todo.html',
+                templateUrl: 'todo.html',
                 controller: 'todoCtrl'
             })
             .when('/cv', {
-                templateUrl: 'views/cv.html',
+                templateUrl: 'cv.html',
                 controller: 'cvCtrl'
             })
             .when('/message', {
-                templateUrl: 'views/message.html',
+                templateUrl: 'message.html',
                 controller: 'messageCtrl'
             })
             .otherwise({
