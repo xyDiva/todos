@@ -32,15 +32,26 @@ nodemon 启动程序
 
 ##开发中遇到的问题集合:
 
+###angular
+
 - angular的URL中自动附加'#'的问题  
 reference:  
 1.[HTML5Mode](https://gist.github.com/jrmoran/4277025)  
-2.[AngularJS去掉的URL里的#号](http://blog.fens.me/angularjs-url/)
+2.[AngularJS去掉URL里的#号](http://blog.fens.me/angularjs-url/)
 
 - angular模板404  
 angular的路由是建立在express路由基础之上,前端访问的所有静态资源需要在后端进行配置，例如：  
 `app.use(express.static(path.join(__dirname, 'views')));`  
 可以访问[localhost:3000/index.html](localhost:3000/index.html)判定路径是否设置成功.
+
+###express
+
+- How to set up env as production?
+
+- How  to use .html template on express?  
+reference:  
+1.[Render basic HTML view in Node JS Express?](http://stackoverflow.com/questions/4529586/render-basic-html-view-in-node-js-express?lq=1)  
+2:[How to use EJS template engine on Express?](http://tipstak.blogspot.com/2014/01/how-to-use-ejs-template-engine-on-express.html)
 
 
 ## Documentation
