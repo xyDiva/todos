@@ -1,5 +1,8 @@
-var app = angular.module('app', []);
-app.factory('todos', ['$http', function ($http) {
+'use strict';
+
+var services = angular.module('services',[]);
+
+services.factory('TodoService', ['$http', function ($http) {
     var path = '/api/todo';
     var todos = {};
 
@@ -19,4 +22,19 @@ app.factory('todos', ['$http', function ($http) {
         return $http.delete(path + '/' + params._id);
     };
     return todos;
+}]);
+
+services.factory('MessageService', ['$http', function ($http) {
+    var path = '/api/message';
+    var messages = {};
+
+    messages.getMessages = function () {
+        return $http.get(path);
+    };
+
+    messages.add = function () {
+        return $http.post();
+    };
+
+    return messages;
 }]);

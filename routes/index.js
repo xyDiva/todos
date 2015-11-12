@@ -3,7 +3,9 @@ var router = express.Router();
 
 // home
 router.get('/', function (req, res) {
-    res.render('index');
+    res.render('index',{
+        title:'123'
+    });
 });
 
 // todo_

@@ -44,6 +44,22 @@ angularµÄÂ·ÓÉÊÇ½¨Á¢ÔÚexpressÂ·ÓÉ»ù´¡Ö®ÉÏ,Ç°¶Ë·ÃÎÊµÄËùÓĞ¾²Ì¬×ÊÔ´ĞèÒªÔÚºó¶Ë½øĞĞÅäÖ
 `app.use(express.static(path.join(__dirname, 'views')));`  
 ¿ÉÒÔ·ÃÎÊ[localhost:3000/index.html](localhost:3000/index.html)ÅĞ¶¨Â·¾¶ÊÇ·ñÉèÖÃ³É¹¦.
 
+- ÎÄ¼ş×éÖ¯  
+ÎÄ¼ş½á¹¹¸ù¾İ¹¦ÄÜ»®·Ö£º  
+reference:  
+1.[ÈçºÎ×éÖ¯´óĞÍJavaScriptÓ¦ÓÃÖĞµÄ´úÂë£¿](http://www.csdn.net/article/1970-01-01/2815077)  
+
+- °´Ğè¼ÓÔØÑùÊ½±í  
+reference:  
+1.[How to include view/partial specific styling in AngularJS](http://stackoverflow.com/questions/15193492/how-to-include-view-partial-specific-styling-in-angularjs)  
+2.[Conditionally-rendering css in html head](http://stackoverflow.com/questions/11912330/conditionally-rendering-css-in-html-head)  
+
+- °´Ğè¼ÓÔØcontroller  
+reference:  
+1.[°´Ğè¼ÓÔØ AngularJS µÄ Controller](http://beginor.github.io/2014/12/20/angularjs-controller-load-on-demand.html)  
+
+
+
 ###express
 
 - How to set up env as production?
@@ -51,8 +67,8 @@ angularµÄÂ·ÓÉÊÇ½¨Á¢ÔÚexpressÂ·ÓÉ»ù´¡Ö®ÉÏ,Ç°¶Ë·ÃÎÊµÄËùÓĞ¾²Ì¬×ÊÔ´ĞèÒªÔÚºó¶Ë½øĞĞÅäÖ
 - How  to use .html template on express?  
 reference:  
 1.[Render basic HTML view in Node JS Express?](http://stackoverflow.com/questions/4529586/render-basic-html-view-in-node-js-express?lq=1)  
-2:[How to use EJS template engine on Express?](http://tipstak.blogspot.com/2014/01/how-to-use-ejs-template-engine-on-express.html)
-
+2:[How to use EJS template engine on Express?](http://tipstak.blogspot.com/2014/01/how-to-use-ejs-template-engine-on-express.html)  
+3.[nodejs express template (Ä£°æ)µÄÊ¹ÓÃ (ejs + express)](http://www.cnblogs.com/rubylouvre/p/3421805.html)
 
 ## Documentation
 

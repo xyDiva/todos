@@ -1,10 +1,6 @@
-angular.module('app', ['ngRoute'])
-    .controller('homeCtrl', ['$scope', function ($scope) {
-        $scope.title = 'I am home';
-    }])
-    .controller('todoCtrl', function ($scope) {
-        $scope.title = 'I am todo';
-    })
+'use strict';
+
+angular.module('app', ['ngRoute', 'controllers'])
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode({
             enabled: true,
@@ -13,19 +9,23 @@ angular.module('app', ['ngRoute'])
         $routeProvider
             .when('/', {
                 templateUrl: 'home.html',
-                controller: 'homeCtrl'
+                controller: 'HomeCtrl'
             })
             .when('/todo', {
                 templateUrl: 'todo.html',
-                controller: 'todoCtrl'
+                controller: 'TodoCtrl'
+            })
+            .when('/todo/:id', {
+                templateUrl: 'todoDetail.html',
+                controller: 'TodoDetailCtrl'
             })
             .when('/cv', {
                 templateUrl: 'cv.html',
-                controller: 'cvCtrl'
+                controller: 'CVCtrl'
             })
             .when('/message', {
                 templateUrl: 'message.html',
-                controller: 'messageCtrl'
+                controller: 'MessageCtrl'
             })
             .otherwise({
                 redirectTo: '/' // it will be redirected to index when user visits undefined url address.
