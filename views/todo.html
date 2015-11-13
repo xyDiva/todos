@@ -7,7 +7,7 @@
 <ul class="list-todo">
     <li ng-repeat="todo in todos | filter: search">
         <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
-        <a ng-show="!editing[$index]" href="#/{{todo._id}}">{{todo.name}}</a>
+        <a ng-show="!editing[$index]" href="/todo/{{todo._id}}">{{todo.name}}</a>
         <button ng-show="!editing[$index]" ng-click="edit($index)">edit</button>
         <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
 

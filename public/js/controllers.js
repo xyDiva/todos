@@ -2,12 +2,6 @@
 
 var controller = angular.module('controllers', ['services']);
 
-controller.controller('HomeCtrl', function ($scope) {
-    $scope.title = 'this is home';
-    $scope.cssFiles = ['index'];
-    console.log($scope.title);
-});
-
 controller.controller('TodoCtrl', ['$scope', 'TodoService', function ($scope, TodoService) {
     $scope.editing = [];
     TodoService.getTodos().success(function (arr) {
@@ -97,8 +91,4 @@ controller.controller('MessageCtrl', ['$scope', 'MessageService', function ($sco
             alert('content required');
         }
     };
-}]);
-
-controller.controller('CVCtrl', ['$scope', function ($scope) {
-    $scope.title = 'this is cv';
 }]);

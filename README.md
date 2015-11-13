@@ -53,11 +53,12 @@ reference:
 reference:  
 1.[How to include view/partial specific styling in AngularJS](http://stackoverflow.com/questions/15193492/how-to-include-view-partial-specific-styling-in-angularjs)  
 2.[Conditionally-rendering css in html head](http://stackoverflow.com/questions/11912330/conditionally-rendering-css-in-html-head)  
+3._[angular-css](https://github.com/door3/angular-css)_
+
 
 - 按需加载controller  
 reference:  
 1.[按需加载 AngularJS 的 Controller](http://beginor.github.io/2014/12/20/angularjs-controller-load-on-demand.html)  
-
 
 
 ###express
@@ -69,6 +70,9 @@ reference:
 1.[Render basic HTML view in Node JS Express?](http://stackoverflow.com/questions/4529586/render-basic-html-view-in-node-js-express?lq=1)  
 2:[How to use EJS template engine on Express?](http://tipstak.blogspot.com/2014/01/how-to-use-ejs-template-engine-on-express.html)  
 3.[nodejs express template (模版)的使用 (ejs + express)](http://www.cnblogs.com/rubylouvre/p/3421805.html)
+
+- ejs模板后缀名修改为html后页面无法解析
+
 
 ## Documentation
 

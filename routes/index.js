@@ -3,13 +3,16 @@ var router = express.Router();
 
 // home
 router.get('/', function (req, res) {
-    res.render('index',{
-        title:'123'
-    });
+    res.render('index');
 });
 
 // todo_
 router.get('/todo', function (req, res) {
+    res.render('index');
+});
+
+// todo_
+router.get('/todo/:id', function (req, res) {
     res.render('index');
 });
 
