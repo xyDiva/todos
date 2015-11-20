@@ -60,6 +60,9 @@ reference:
 reference:  
 1.[按需加载 AngularJS 的 Controller](http://beginor.github.io/2014/12/20/angularjs-controller-load-on-demand.html)  
 
+- 一个奇怪的问题:当前路由改变的时候(比如从`localhost:3000/todo`跳转到`localhost:3000/todo/1`),静态资源的请求路径会自动添加`todo/`目录，从而导致404错误.  
+所有静态资源都使用绝对路径的方式引用.例如`src="js/index.js"` 改为 `src="/js/index.js"`  
+
 
 ###express
 
