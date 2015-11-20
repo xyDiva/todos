@@ -33,7 +33,7 @@ var app = express();
 app.engine('.html', require('ejs').__express);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'html'); // 默认模板后缀
 
 // uncomment after placing your favicon in /public
@@ -42,16 +42,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public'))); // express.static 挂载
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use('/', routes); // 拦截所有的根路径请求，交给routes处理
 app.use('/api/todo', todo);
 app.use('/api/message', message);
-
-// redirect all others to the index (HTML5 history)
-app.get('*', routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
