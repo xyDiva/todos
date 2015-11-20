@@ -28,14 +28,37 @@ nodemon Æô¶¯³ÌĞò
 
 - [MongooseÑ§Ï°²Î¿¼ÎÄµµ](https://cnodejs.org/topic/504b4924e2b84515770103dd)
 
-- [markdownÓï·¨](http://wowubuntu.com/markdown/)
+- [markdownÓï·¨](http://wowubuntu.com/markdown/)  
+
+##´ı¿ª·¢/ÍêÉÆ¹¦ÄÜ:
+
+- blog¹¦ÄÜ
+
+- ÁôÑÔ¹¦ÄÜ£º 
+1. ÁôÑÔ  
+2. »Ø¸´  
+3. ÑéÖ¤Âë  
+
+references:  
+[»ùÓÚReact+NodeJs+MongoDBµÄ¼òÒ×ÁôÑÔ°å](http://qianliwei.com/2014/12/04/react-msgboard-1/)
+
+- ÔÚÏßcvÔ¤ÀÀ  
+
+- todoĞ¡¹¤¾ß£º  
+1. ÍêÉÆ  
+
+- ²âÊÔ
+
+- ÆäËû£º  
+1. ½çÃæÓÅ»¯  
+2. ´úÂë½á¹¹Ä¿Â¼ÓÅ»¯  
 
 ##¿ª·¢ÖĞÓöµ½µÄÎÊÌâ¼¯ºÏ:
 
 ###angular
 
 - angularµÄURLÖĞ×Ô¶¯¸½¼Ó'#'µÄÎÊÌâ  
-reference:  
+references:  
 1.[HTML5Mode](https://gist.github.com/jrmoran/4277025)  
 2.[AngularJSÈ¥µôURLÀïµÄ#ºÅ](http://blog.fens.me/angularjs-url/)
 
@@ -46,18 +69,18 @@ angularµÄÂ·ÓÉÊÇ½¨Á¢ÔÚexpressÂ·ÓÉ»ù´¡Ö®ÉÏ,Ç°¶Ë·ÃÎÊµÄËùÓĞ¾²Ì¬×ÊÔ´ĞèÒªÔÚºó¶Ë½øĞĞÅäÖ
 
 - ÎÄ¼ş×éÖ¯  
 ÎÄ¼ş½á¹¹¸ù¾İ¹¦ÄÜ»®·Ö£º  
-reference:  
+references:  
 1.[ÈçºÎ×éÖ¯´óĞÍJavaScriptÓ¦ÓÃÖĞµÄ´úÂë£¿](http://www.csdn.net/article/1970-01-01/2815077)  
 
 - °´Ğè¼ÓÔØÑùÊ½±í  
-reference:  
+references:  
 1.[How to include view/partial specific styling in AngularJS](http://stackoverflow.com/questions/15193492/how-to-include-view-partial-specific-styling-in-angularjs)  
 2.[Conditionally-rendering css in html head](http://stackoverflow.com/questions/11912330/conditionally-rendering-css-in-html-head)  
 3._[angular-css](https://github.com/door3/angular-css)_
 
 
 - °´Ğè¼ÓÔØcontroller  
-reference:  
+references:  
 1.[°´Ğè¼ÓÔØ AngularJS µÄ Controller](http://beginor.github.io/2014/12/20/angularjs-controller-load-on-demand.html)  
 
 - Ò»¸öÆæ¹ÖµÄÎÊÌâ:µ±Ç°Â·ÓÉ¸Ä±äµÄÊ±ºò(±ÈÈç´Ó`localhost:3000/todo`Ìø×ªµ½`localhost:3000/todo/1`),¾²Ì¬×ÊÔ´µÄÇëÇóÂ·¾¶»á×Ô¶¯Ìí¼Ó`todo/`Ä¿Â¼£¬´Ó¶øµ¼ÖÂ404´íÎó.  
@@ -69,7 +92,7 @@ reference:
 - How to set up env as production?
 
 - How  to use .html template on express?  
-reference:  
+references:  
 1.[Render basic HTML view in Node JS Express?](http://stackoverflow.com/questions/4529586/render-basic-html-view-in-node-js-express?lq=1)  
 2:[How to use EJS template engine on Express?](http://tipstak.blogspot.com/2014/01/how-to-use-ejs-template-engine-on-express.html)  
 3.[nodejs express template (Ä£°æ)µÄÊ¹ÓÃ (ejs + express)](http://www.cnblogs.com/rubylouvre/p/3421805.html)
