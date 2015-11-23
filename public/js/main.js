@@ -3,7 +3,7 @@
 var app = angular.module('app', ['ngRoute', 'controllers', 'door3.css']);
 
 app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-    // 移除url中的管理路径#
+    // 绉婚櫎url涓殑绠＄悊璺緞#
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false

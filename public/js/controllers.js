@@ -10,13 +10,13 @@ controller.controller('TodoCtrl', ['$scope', 'TodoService', function ($scope, To
 
     $scope.add = function () {
         var todo = {};
-        if ($scope.newTodo) {
-            todo.name = $scope.newTodo;
-            todo.completed = false;
+        if (!$scope.newTodo) {
+            alert('name required');
+            return false;
         }
         else {
-            alert('name required...');
-            return false;
+            todo.name = $scope.newTodo;
+            todo.completed = false;
         }
         TodoService.addTodo(todo).success(function (r) {
             alert('added successfully');
@@ -75,20 +75,38 @@ controller.controller('TodoDetailCtrl', [
         }
     }]);
 
-controller.controller('MessageCtrl', ['$scope', 'MessageService', function ($scope, messageService) {
-    messageService.getMessages().success(function (arr) {
+controller.controller('MessageCtrl', ['$scope', 'MessageService', function ($scope, MessageService) {
+    // list of messages
+    MessageService.getMessages().success(function (arr) {
+        for (var i in arr) {
+            var item = arr[i],
+                time = item.time;
+            item.time = Tool.convertDate(time);
+            console.log(item.time);
+        }
         $scope.messages = arr;
     });
+
+    // leave a message
     $scope.add = function () {
-        var message = $scope.message;
+        var message = $scope.message || {};
         if (!message.name) {
             alert('name required');
+            return false;
         }
         else if (!message.email) {
             alert('email required');
+            return false;
         }
         else if (!message.content) {
             alert('content required');
+            return false;
         }
+        MessageService.addMessage(message).success(function () {
+            alert('added successfully');
+            message.time = Tool.convertDate(new Date());
+            $scope.messages.push(message);
+            $scope.message = {}; // clear textbox
+        });
     };
 }]);

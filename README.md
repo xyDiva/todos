@@ -84,8 +84,11 @@ references:
 1.[按需加载 AngularJS 的 Controller](http://beginor.github.io/2014/12/20/angularjs-controller-load-on-demand.html)  
 
 - 一个奇怪的问题:当前路由改变的时候(比如从`localhost:3000/todo`跳转到`localhost:3000/todo/1`),静态资源的请求路径会自动添加`todo/`目录，从而导致404错误.  
-所有静态资源都使用绝对路径的方式引用.例如`src="js/index.js"` 改为 `src="/js/index.js"`  
+建议所有静态资源都使用绝对路径的方式引用.例如`src="js/index.js"` 改为 `src="/js/index.js"`  
 
+
+- angular的html模板中文乱码  
+我使用的编辑器是webstorm,修改html模板文件编码为统一的utf-8：file--file encoding--convert  
 
 ###express
 
@@ -99,6 +102,13 @@ references:
 
 - ejs模板后缀名修改为html后页面无法解析
 
+
+
+###mongodb
+
+- How to convert date format in mongodb  
+references:  
+1.[Formatting ISODate from Mongodb](http://stackoverflow.com/questions/11486779/formatting-isodate-from-mongodb)
 
 ## Documentation
 

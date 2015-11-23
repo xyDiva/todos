@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
     Message.find(function (err, msgs) {
         if (err) return next(err);
         res.json(msgs);
-    }).sort({time: -1});
+    });
 });
 
 /* POST /api/message */

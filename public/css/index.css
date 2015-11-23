@@ -19,6 +19,9 @@ li {
 a {
   text-decoration: none; }
 
+i {
+  font-style: normal; }
+
 /* color & background */
 .hidden {
   display: none; }

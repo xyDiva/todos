@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 
 gulp.task('default', function () {
-    // 将你的默认的任务代码放在这
     gulp.watch('public/scss/**/*.scss', ['styles']);
 });
 

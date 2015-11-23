@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('services',[]);
+var services = angular.module('services', []);
 
 services.factory('TodoService', ['$http', function ($http) {
     var path = '/api/todo';
@@ -32,8 +32,8 @@ services.factory('MessageService', ['$http', function ($http) {
         return $http.get(path);
     };
 
-    messages.add = function () {
-        return $http.post();
+    messages.addMessage = function (message) {
+        return $http.post(path, message);
     };
 
     return messages;
