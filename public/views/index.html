@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
     <title>diva here.</title>
     <link href="favicon.ico" rel="Shortcut Icon" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-    <nav>
-        <a href="/">home</a>
-        <a href="/todo">todo</a>
-        <a href="/cv">cv</a>
-        <a href="/message">message</a>
-    </nav>
-</header>
+<div class="container">
+    <header>
+        <nav>
+            <a href="/">home</a>
+            <a href="/todo">todo</a>
+            <a href="/cv">cv</a>
+            <a href="/message">message</a>
+        </nav>
+    </header>
 
-<section class="main" ng-view></section>
+    <section class="main" ng-view></section>
 
-<footer>&copy;2015 diva</footer>
+    <footer>&copy;2015 diva</footer>
+</div>
 
 <!-- Libraries -->
 <script src="/js/libs/angular.min.js"></script>

@@ -1,4 +1,3 @@
-
 <ul class="list-message" ng-show="messages.length">
     <li ng-repeat="msg in messages">
         <div class="desc">游客 <i class="name">{{msg.name}}</i> 在 <i class="time">{{msg.time}}</i> 留言:</div>
@@ -9,8 +8,14 @@
 <div class="no-data" ng-hide="messages.length">no data</div>
 
 <form class="form-message">
-    <div class="item"><input type="text" ng-model="message.name" placeholder="name..."/></div>
-    <div class="item"><input type="text" ng-model="message.email" placeholder="email..."/></div>
-    <div class="item"><input type="text" ng-model="message.content" placeholder="content..."/></div>
+    <div class="item">
+        <input type="text" class="form-control" ng-model="message.name" placeholder="name..."/>
+    </div>
+    <div class="item">
+        <input type="text" class="form-control" ng-model="message.email" placeholder="email..."/>
+    </div>
+    <div class="item">
+        <input type="text" class="form-control" ng-model="message.content" placeholder="content..."/>
+    </div>
     <input type="button" class="btn-comment" ng-click="add()" value="comment"/>
 </form>

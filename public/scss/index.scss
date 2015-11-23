@@ -1,19 +1,12 @@
 @charset "utf-8";
 
-@import "reset";
 @import "common";
 @import "header";
-
-html, body {
-  height: 100%;
-}
 
 .main-index {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  height: 320px;
-  line-height: 30px;
-  text-align: center;
+  height: 390px;
 }
