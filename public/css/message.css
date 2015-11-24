@@ -5,8 +5,19 @@ ul {
 li {
   list-style: none; }
 
+i {
+  font-style: normal; }
+
 input {
   border: none; }
+
+a:active, a:hover, a:focus {
+  color: white;
+  outline: none; }
+
+/* ui bootstrap */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer; }
 
 .opa {
   opacity: 0.5; }
@@ -32,6 +43,8 @@ header {
     header nav a {
       padding: 0 16px;
       color: white; }
+      header nav a.active {
+        text-decoration: underline; }
 
 footer {
   position: fixed;
@@ -59,11 +72,9 @@ footer {
   height: 40px;
   margin: 4px 8px;
   overflow: hidden; }
-  .form-message .item input[type=text] {
+  .form-message .item input {
     width: 100%;
     height: 40px; }
-    .form-message .item input[type=text]::-webkit-input-placeholder {
-      color: lightgray; }
 
 .form-message .btn-comment {
   display: block;

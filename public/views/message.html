@@ -9,13 +9,16 @@
 
 <form class="form-message">
     <div class="item">
-        <input type="text" class="form-control" ng-model="message.name" placeholder="name..."/>
+        <input type="text" class="form-control" ng-model="message.name" placeholder="name..."
+               uib-tooltip="name required" tooltip-enable="!message.name"/>
     </div>
     <div class="item">
-        <input type="text" class="form-control" ng-model="message.email" placeholder="email..."/>
+        <input type="email" class="form-control" ng-model="message.email" placeholder="email..."
+               uib-tooltip="email required" tooltip-enable="!message.email"/>
     </div>
     <div class="item">
-        <input type="text" class="form-control" ng-model="message.content" placeholder="content..."/>
+        <input type="text" class="form-control" ng-model="message.content" placeholder="content..."
+               uib-tooltip="content required" tooltip-enable="!message.content"/>
     </div>
     <input type="button" class="btn-comment" ng-click="add()" value="comment"/>
 </form>

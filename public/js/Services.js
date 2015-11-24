@@ -38,3 +38,29 @@ services.factory('MessageService', ['$http', function ($http) {
 
     return messages;
 }]);
+
+services.factory('AlertService', function ($rootScope) {
+    var alertObj = {};
+
+    $rootScope.alerts = [];
+
+    alertObj.add = function (type, msg) {
+        $rootScope.alerts.push({
+            'type': type,
+            'msg': msg,
+            'close': function () {
+                alertObj.closeAlert(this);
+            }
+        });
+    };
+
+    alertObj.closeAlert = function (alert) {
+        alertObj.closeAlertIdx($rootScope.alerts.indexOf(alert));
+    };
+
+    alertObj.closeAlertIdx = function (index) {
+        $rootScope.alerts.splice(index, 1);
+    };
+
+    return alertObj;
+});

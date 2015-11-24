@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* color & background */
-$lightgreen:lightgreen;
+$lightgreen: lightgreen;
 
 ul {
   padding: 0;
@@ -11,8 +11,22 @@ li {
   list-style: none;
 }
 
+i {
+  font-style: normal;
+}
+
 input {
   border: none;
+}
+
+a:active, a:hover, a:focus {
+  color: white;
+  outline: none;
+}
+
+/* ui bootstrap */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
 }
 
 .opa {

@@ -34,3 +34,6 @@ var Tool = {
     }
 };
 
+$(function () {
+
+});

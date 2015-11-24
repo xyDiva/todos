@@ -2,6 +2,10 @@
 
 var controller = angular.module('controllers', ['services']);
 
+controller.controller('MainCtrl', function ($scope, $location) {
+    $scope.url = $location.url();
+});
+
 controller.controller('TodoCtrl', ['$scope', 'TodoService', function ($scope, TodoService) {
     $scope.editing = [];
     TodoService.getTodos().success(function (arr) {
@@ -91,7 +95,7 @@ controller.controller('MessageCtrl', ['$scope', 'MessageService', function ($sco
     $scope.add = function () {
         var message = $scope.message || {};
         if (!message.name) {
-            alert('name required');
+            alert('name required!');
             return false;
         }
         else if (!message.email) {

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'controllers', 'door3.css']);
+var app = angular.module('app', ['ngRoute', 'controllers', 'door3.css', 'ui.bootstrap']);
 
 app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     // 移除url中的管理路径#
