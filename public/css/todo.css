@@ -13,6 +13,7 @@ input {
 
 a:active, a:hover, a:focus {
   color: white;
+  text-decoration: none;
   outline: none; }
 
 /* ui bootstrap */
@@ -92,3 +93,6 @@ footer {
   .list-todo li a {
     display: block;
     color: #4c4c4c; }
+
+.detail-todo textarea {
+  margin-bottom: 8px; }

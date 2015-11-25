@@ -3,7 +3,7 @@
 var controller = angular.module('controllers', ['services']);
 
 controller.controller('MainCtrl', function ($scope, $location) {
-    $scope.url = $location.url();
+    $scope.$location = $location;
 });
 
 controller.controller('TodoCtrl', ['$scope', 'TodoService', function ($scope, TodoService) {
@@ -60,20 +60,17 @@ controller.controller('TodoDetailCtrl', [
     'TodoService',
     function ($scope, $routeParams, $location, TodoService) {
         TodoService.getTodo($routeParams.id).success(function (todo) {
-            console.log(todo);
             $scope.todo = todo;
         });
 
-//                $scope.todo = todos.get({id: $routeParams.id});
-
         $scope.update = function () {
-            TodoService.update({id: $scope.todo._id}, $scope.todo, function () {
+            TodoService.updateTodo($scope.todo, function () {
                 $location.url('/');
             });
         };
 
         $scope.remove = function () {
-            TodoService.remove({id: $scope.todo._id}, function () {
+            TodoService.deleteTodo({id: $scope.todo._id}, function () {
                 $location.url('/');
             });
         }
@@ -86,7 +83,6 @@ controller.controller('MessageCtrl', ['$scope', 'MessageService', function ($sco
             var item = arr[i],
                 time = item.time;
             item.time = Tool.convertDate(time);
-            console.log(item.time);
         }
         $scope.messages = arr;
     });

@@ -88,7 +88,13 @@ references:
 
 
 - angular的html模板中文乱码  
-我使用的编辑器是webstorm,修改html模板文件编码为统一的utf-8：file--file encoding--convert  
+我使用的编辑器是webstorm,统一修改html模板等静态文件编码为utf-8：file-->file encoding-->convert  
+
+- 实现导航栏tab切换     
+references:  
+1.[细说Angular ng-class](http://www.cnblogs.com/whitewolf/archive/2013/05/22/3092184.html)  
+2.[$route](https://docs.angularjs.org/api/ngRoute/service/$route)  
+
 
 ###express
 
@@ -109,6 +115,7 @@ references:
 - How to convert date format in mongodb  
 references:  
 1.[Formatting ISODate from Mongodb](http://stackoverflow.com/questions/11486779/formatting-isodate-from-mongodb)
+
 
 ## Documentation
 

@@ -11,10 +11,10 @@
 <div class="container" ng-controller="MainCtrl">
     <header>
         <nav>
-            <a href="/">home</a>
-            <a href="/todo">todo</a>
-            <a href="/cv">cv</a>
-            <a href="/message">message</a>
+            <a ng-class="{'active':$location.url()=='/'}" href="/">home</a>
+            <a ng-class="{'active':$location.url()=='/todo'}" href="/todo">todo</a>
+            <a ng-class="{'active':$location.url()=='/cv'}" href="/cv">cv</a>
+            <a ng-class="{'active':$location.url()=='/message'}" href="/message">message</a>
         </nav>
     </header>
 
