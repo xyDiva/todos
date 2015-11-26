@@ -8,8 +8,8 @@ gulp.task('default', function () {
 gulp.task('styles', function () {
     gulp.src([
         'public/scss/index.scss',
+        'public/scss/about.scss',
         'public/scss/todo.scss',
-        'public/scss/cv.scss',
         'public/scss/message.scss'
     ])
         .pipe(sass().on('error', sass.logError))

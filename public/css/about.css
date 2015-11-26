@@ -12,7 +12,6 @@ input {
   border: none; }
 
 a:active, a:hover, a:focus {
-  color: white;
   text-decoration: none;
   outline: none; }
 
@@ -56,3 +55,6 @@ footer {
   font-size: 14px;
   text-align: center;
   background: grey; }
+
+.avatar {
+  width: 100px; }

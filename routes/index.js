@@ -16,8 +16,8 @@ router.get('/todo/:id', function (req, res) {
     res.render('index');
 });
 
-// cv
-router.get('/cv', function (req, res) {
+// about
+router.get('/about', function (req, res) {
     res.render('index');
 });
 

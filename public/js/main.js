@@ -23,9 +23,9 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
             controller: 'TodoDetailCtrl',
             css: '/css/todo.css'
         })
-        .when('/cv', {
-            templateUrl: '/views/cv.html',
-            css: '/css/cv.css'
+        .when('/about', {
+            templateUrl: '/views/about.html',
+            css: '/css/about.css'
         })
         .when('/message', {
             templateUrl: '/views/message.html',
