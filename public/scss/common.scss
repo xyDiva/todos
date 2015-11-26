@@ -1,22 +1,43 @@
 @charset "utf-8";
 
-.hidden {
-  display: none;
+/* color & background */
+$lightgreen: lightgreen;
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+i {
+  font-style: normal;
+}
+
+input {
+  border: none;
+}
+
+a:active, a:hover, a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+/* ui bootstrap */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
 }
 
 .opa {
   opacity: 0.5;
 }
 
-.fr {
-  float: right;
-}
-
 .no-data {
   text-align: center;
 }
 
-.container {
-  max-width: 640px;
+.main {
   margin: 0 auto;
+  padding: 50px 0 40px;
 }

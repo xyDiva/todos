@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@import "common";
+@import "header";
+
+.list-message {
+  li {
+    margin-bottom: 8px;
+    border-bottom: lightgray 1px solid;
+    .name {
+      font-weight: bold;
+      color: $lightgreen;
+    }
+    .time {
+      font-size: 12px;
+      color: lightgray;
+    }
+    .content {
+      padding: 8px 0;
+    }
+  }
+}
+
+.form-message {
+  .item {
+    height: 40px;
+    margin: 4px 8px;
+    overflow: hidden;
+    input {
+      width: 100%;
+      height: 40px;
+    }
+  }
+  .btn-comment {
+    display: block;
+    margin: 8px auto;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    background: $lightgreen;
+  }
+}

@@ -1,0 +1,30 @@
+<form class="form-action">
+    <input type="text" class="ipt-search" placeholder="search..." ng-model="search.name">
+    <input type="text" class="ipt-todo" placeholder="add todo..." ng-model="newTodo">
+    <input type="button" class="btn btn-add" value="ADD" ng-click="add()"/>
+</form>
+<ul class="list-todo">
+    <li ng-repeat="todo in todos | filter: search">
+        <!--<input type="checkbox" ng-model="todo.completed" ng-change="update($index)">-->
+        <div class="col content">
+            <a ng-show="!editing[$index]" href="/todo/{{todo._id}}">{{todo.name}}</a>
+            <input ng-show="editing[$index]" type="text" ng-model="todo.name">
+        </div>
+        <div class="col action btn-group">
+            <button class="btn btn-primary btn-xs" ng-show="!editing[$index]" ng-click="edit($index)">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </button>
+            <button class="btn btn-danger btn-xs" ng-show="!editing[$index]" ng-click="remove($index)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="col action btn-group">
+            <button class="btn btn-primary btn-xs" ng-show="editing[$index]" ng-click="update($index)">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </button>
+            <button class="btn btn-default btn-xs" ng-show="editing[$index]" ng-click="cancel($index)">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,21 @@
+<section class="detail-todo">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" ng-model="todo.completed">{{todo.name}}
+        </label>
+    </div>
+
+    <textarea class="form-control" rows="3" ng-model="todo.note"></textarea>
+
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" ng-click="update()">Update</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger" ng-click="remove()">Remove</button>
+        </div>
+        <div class="btn-group" role="group">
+            <a type="button" class="btn btn-default" href="/todo">Cancel</a>
+        </div>
+    </div>
+</section>
