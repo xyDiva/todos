@@ -22,6 +22,11 @@ mongod 连接数据库
 nodemon 启动程序
 ```
 
+```
+heroku logs --app xydiva 日志查询
+```
+
+
 ##开发中参考的教程文档:
 
 - [辰风君的笔记本:MEAN全栈开发](http://gocwind.com/blog/categories/mean/)
