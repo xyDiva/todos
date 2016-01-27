@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public'))); // express.static 挂载
-app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use('/', routes); // 拦截所有的根路径请求，交给routes处理
 app.use('/api/todo', todo);
