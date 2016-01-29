@@ -3,6 +3,10 @@
 /* color & background */
 $lightgreen: lightgreen;
 
+body {
+  background: url("../images/background.jpg") repeat;
+}
+
 ul {
   padding: 0;
 }

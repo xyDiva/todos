@@ -1,4 +1,7 @@
 /* color & background */
+body {
+  background: url("../images/background.jpg") repeat; }
+
 ul {
   padding: 0; }
 
